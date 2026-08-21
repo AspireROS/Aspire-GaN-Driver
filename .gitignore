@@ -20,6 +20,10 @@ cmake-build-*/
 # HPM SDK build artifacts
 Firmware/HPM_SDK/build/
 Firmware/HPM_SDK/output/
+# 忽略 HPM 编译输出文件
+**/hpm5e00evk_flash_xip_debug
+
+
 
 # Log & temp
 *.log
