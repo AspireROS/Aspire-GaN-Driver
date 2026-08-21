@@ -73,18 +73,22 @@ Aspire-GaN-Driver
 - CMake + Ninja / Make
 - J-Link / DAP-Link 调试下载器
 - 可选：TwinCAT / IgH EtherCAT Master（总线功能测试）
-
+```
 # 克隆仓库并拉取所有子模块代码
+```
 git clone --recursive https://github.com/xxx/Aspire-GaN-Driver.git
 cd Aspire-GaN-Driver
-
+```
 # 创建编译输出目录
+```
 mkdir build && cd build
-
+```
 # CMake配置工程
+```
 cmake ..
-
+```
 # 编译固件
+```
 make -j
 ```
 ## 🔗 EtherCAT 使用简述
