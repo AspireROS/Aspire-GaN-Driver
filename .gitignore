@@ -1,0 +1,48 @@
+# Build output
+build/
+cmake-build-*/
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+
+# IDE
+.vscode/
+.idea/
+*.user
+*.launch
+.cproject
+.project
+.settings/
+
+# SDK & submodule ignore (keep submodule itself)
+# HPM SDK build artifacts
+Firmware/HPM_SDK/build/
+Firmware/HPM_SDK/output/
+
+# Log & temp
+*.log
+*.txt
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Hardware
+*.PrjPcb.zip
+*.Gerber
+*.DRC
+*.NET
+*.Bak
+History/
+Outputs/
+
+# Python
+__pycache__/
+*.pyc
+*.venv/
+
+# Qt build
+Tools/PC_Software/build-*/
+Tools/PC_Software/*.pro.user
