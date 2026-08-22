@@ -1,138 +1,138 @@
 # Aspire-GaN-Driver
-> 基于 **HPM5E3Y** + 氮化镓(GaN)功率器件的 EtherCAT 高速伺服电机驱动器开源项目
-> Open-source EtherCAT servo driver based on HPM5E3Y MCU & GaN power device
+
+> 基于 HPM5E3Y 系列 MCU 与 GaN 功率器件的 EtherCAT 电机驱动器项目。
+>
+> An EtherCAT motor-drive project based on HPM5E3Y-series MCUs and GaN power devices.
 
 <p align="center">
+  <a href="https://github.com/AspireROS/Aspire-GaN-Driver/tree/Hardware">
+    <img src="https://img.shields.io/badge/Hardware-branch-1f6feb?style=flat-square" alt="Hardware branch">
+  </a>
+  <a href="https://github.com/AspireROS/Aspire-GaN-Driver/tree/Software">
+    <img src="https://img.shields.io/badge/Software-branch-2da44e?style=flat-square" alt="Software branch">
+  </a>
   <img src="https://img.shields.io/badge/MCU-HPM5E3Y-0091D5?style=flat-square" alt="MCU">
-  <img src="https://img.shields.io/badge/Power-GaN-blue?style=flat-square" alt="GaN">
-  <img src="https://img.shields.io/badge/Control-FOC-orange?style=flat-square" alt="FOC">
-  <img src="https://img.shields.io/badge/Bus-EtherCAT-green?style=flat-square" alt="EtherCAT">
-  <img src="https://img.shields.io/badge/License-Apache%202.0-red?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/Arch-RISC--V-9D2020?style=flat-square" alt="RISC-V">
-  <img src="https://img.shields.io/badge/Status-Developing-yellow?style=flat-square" alt="Status">
+  <img src="https://img.shields.io/badge/Power-GaN-2563eb?style=flat-square" alt="GaN">
+  <img src="https://img.shields.io/badge/Control-FOC-f97316?style=flat-square" alt="FOC">
+  <img src="https://img.shields.io/badge/Bus-EtherCAT-16a34a?style=flat-square" alt="EtherCAT">
+  <img src="https://img.shields.io/badge/License-Apache%202.0-dc2626?style=flat-square" alt="Apache 2.0">
 </p>
 
 ## 📌 项目简介
-Aspire-GaN-Driver 是一套面向高性能伺服、FOC 电机控制的开源功率驱动方案，主控采用 **HPM5E3Y** 国产高性能 RISC-V MCU，功率级搭载氮化镓（GaN）开关器件，依托 GaN 高频、低开关损耗优势实现高功率密度、高效率驱动；通信层原生支持 **EtherCAT** 工业实时总线，可对接倍福 TwinCAT、IgH EtherCAT Master 等主站，适用于机器人关节、运动平台、测功机、高性能有感 FOC 伺服等场景。
 
-本项目完整开放硬件原理图、PCB、BOM、底层驱动、FOC 控制算法、EtherCAT 从站协议栈、调试上位机对接示例，可供学习、二次开发与工程原型验证。
+Aspire-GaN-Driver 面向高性能电机控制与 EtherCAT 实时通信场景，目标是构建一套基于 HPM5E3Y 系列 RISC-V MCU 和 GaN 功率器件的开放式电机驱动方案。
 
-## ✨ 核心特性
-- 🧠 **主控平台**：HPM5E3Y，基于官方 HPM SDK 开发
-- ⚡ **功率器件**：氮化镓 GaN，支持高频开关、低损耗、高功率密度
-- 🎛️ **控制算法**：有感 FOC 矢量控制，支持 AS5047P 磁编码器，电流/速度/位置三闭环控制，预留滤波、龙伯格观测器、弱磁控制扩展接
-- 🔗 **实时总线**：EtherCAT 从站，CoE 协议，自定义 PDO 映射，支持 DC 分布式时钟同步，满足微秒级实时控制
-- 🛠️ **调试接口**：UART / CAN FD / USB / JTAG，兼容 VOFA 在线波形观测，支持实时参数调参
-- 🛡️ **硬件保护**：硬件级过流、过压、欠压、过温、硬件刹车、短路保护、驱动使能互锁
-- 📦 **完整开源**：原理图、PCB、BOM、固件源码、配套开发文档、TwinCAT 主站测试工程、上位机调试工具
+项目当前采用分支管理硬件与软件资料：
 
-## 🧰 硬件规格
-> 可根据硬件版本自行填充实际参数
-- 主控芯片：HPM5E3Y
-- 功率器件：GaN 氮化镓功率开关
-- 母线供电：____ V DC
-- 控制方式：三相有感 FOC 矢量控制
-- 编码器：SPI 磁编码器（AS5047P）
-- 通信接口：EtherCAT、CAN FD、UART、USB
-- PWM 开关频率：最高 ____ kHz
-- 适配电机：三相永磁同步电机 PMSM / BLDC
+- **`main`**：项目总览、许可协议与仓库导航。
+- **[`Hardware`](https://github.com/AspireROS/Aspire-GaN-Driver/tree/Hardware)**：HPM5E3YIVK1 核心板的原理图、PCB 工程、引脚分配和器件资料。
+- **[`Software`](https://github.com/AspireROS/Aspire-GaN-Driver/tree/Software)**：基于 HPM5E00 平台的软件、板级支持包和外设示例，包含电机控制及 EtherCAT 相关配置。
 
-## 📂 仓库目录结构
+> 当前项目仍处于开发阶段。硬件版本、软件功能覆盖范围和可用接口请以对应分支中的实际文件为准。
+
+## 📂 当前内容
+
+### 🔧 硬件分支
+
+硬件资料位于 [`Hardware`](https://github.com/AspireROS/Aspire-GaN-Driver/tree/Hardware) 分支，主要包括：
+
+- `Hardware/Introduction.md`：硬件资料说明。
+- `Hardware/PCB Schematic/JLC/`：嘉立创 EDA 工程文件。
+- `Hardware/Pin Assignment/Pin Assignment.csv`：MCU 与外设引脚分配表。
+- `Hardware/Component Selection & Requirements/`：主控、电源、以太网、CAN、USB 及接口保护等器件资料。
+
+### 💻 软件分支
+
+软件资料位于 [`Software`](https://github.com/AspireROS/Aspire-GaN-Driver/tree/Software) 分支，当前可见内容包括：
+
+- `Software/app/`：应用与外设示例。
+- `Software/boards/hpm5e00evk/`：HPM5E00EVK 板级支持、引脚复用、PWM、ADC、QEI 和 EtherCAT 相关配置。
+- `Software/boards/hpm5e00evk/README_zh.rst`：开发板说明和接口信息。
+
+## ✨ 主要方向
+
+- 🧠 HPM5E3Y 系列 RISC-V MCU 平台
+- ⚡ GaN 功率级与高频电机驱动
+- 🎛️ 三相 BLDC/PMSM 电机控制
+- 📈 FOC 矢量控制与电流、速度、位置控制环
+- 🔌 PWM、ADC、QEI 等电机控制外设协同
+- 🔗 EtherCAT 实时通信与从站接口支持
+- 🤖 面向机器人关节、运动平台和其他高动态电机系统的原型验证
+
+以上内容描述项目方向；尚未在当前仓库中明确实现或验证的功能，不应视为稳定产品特性。
+
+## 🚀 快速开始
+
+### 获取仓库
+
+克隆主分支：
+
 ```bash
-Aspire-GaN-Driver
-├── Hardware                # 硬件资料
-│   ├── SCH                 # 原理图工程
-│   ├── PCB                 # PCB 工程文件
-│   ├── BOM                 # 物料清单
-│   └── Datasheet           # 关键器件手册
-├── Firmware                # HPM5E3Y 下位机固件
-│   ├── app                 # 应用层：FOC 算法、EtherCAT、电机状态机、保护逻辑
-│   ├── drivers             # 底层外设驱动：ADC、PWM、SPI、ETH、GPIO、CANFD
-│   ├── lib                 # 第三方库：EtherCAT 从站协议栈、数字滤波、坐标变换
-│   ├── cmake               # CMake 编译配置脚本
-│   └── HPM_SDK             # HPM 官方 SDK（Git 子模块）
-├── Tools                   # 配套调试工具
-│   ├── PC_Software         # Qt / Python 上位机调试示例
-│   ├── TwinCAT_Demo        # EtherCAT 主站测试工程
-│   └── Vofa_Config         # VOFA 示波器波形配置文件
-├── Docs                    # 全套开发文档
-│   ├── QuickStart.md       # 快速上手教程
-│   ├── EtherCAT_Guide.md   # EtherCAT 配置与 PDO 映射说明
-│   ├── FOC_Algorithm.md     # FOC 控制算法详解
-│   └── Hardware_Manual.md  # 硬件调试、焊接、上电测试手册
-├── .gitignore
-├── CMakeLists.txt
-├── LICENSE
-└── README.md
-```
-## 🚀 编译与烧录
-### 环境依赖
-```bash
-- HPM SDK（适配 HPM5E3Y 芯片版本）
-- RISC-V GCC 交叉编译工具链
-- CMake + Ninja / Make
-- J-Link / DAP-Link 调试下载器
-- 可选：TwinCAT / IgH EtherCAT Master（总线功能测试）
-```
-# 克隆仓库并拉取所有子模块代码
-```
-git clone --recursive https://github.com/xxx/Aspire-GaN-Driver.git
+git clone https://github.com/AspireROS/Aspire-GaN-Driver.git
 cd Aspire-GaN-Driver
 ```
-# 创建编译输出目录
+
+按需获取硬件或软件分支：
+
+```bash
+git fetch origin Hardware Software
+
+# 查看硬件资料
+git switch Hardware
+
+# 查看软件资料
+git switch Software
 ```
-mkdir build && cd build
+
+也可以直接克隆指定分支：
+
+```bash
+git clone --branch Hardware https://github.com/AspireROS/Aspire-GaN-Driver.git Aspire-GaN-Driver-Hardware
+git clone --branch Software https://github.com/AspireROS/Aspire-GaN-Driver.git Aspire-GaN-Driver-Software
 ```
-# CMake配置工程
-```
-cmake ..
-```
-# 编译固件
-```
-make -j
-```
-## 🔗 EtherCAT 使用简述
 
-1. 固件内置标准 EtherCAT 从站协议栈，支持自定义 CoE 对象字典
-2. 默认 PDO 包含：目标位置 / 目标速度 / 目标电流、实际位置、实际转速、母线电压、驱动温度、故障状态码
-3. 支持 DC 分布式时钟，可实现多轴高精度同步运动控制
-4. 详细对象字典配置、PDO 自定义映射、TwinCAT 对接教程参考 Docs/EtherCAT_Guide.md
+### 🧰 软件开发环境
 
-> 
-> ⚠️ 提示：EtherCAT 通信稳定性依赖 PHY 外围电路与 PCB 差分阻抗严格控制，布线不规范极易出现丢包、同步抖动问题。
+软件分支使用 HPM5E00 系列板级支持和 HPM SDK 生态。开始编译前，请根据软件分支中的板级说明准备：
 
-## ⚠️ 安全警告
+- HPM SDK 及其依赖
+- RISC-V 交叉编译工具链
+- 对应版本的 CMake、Ninja 或 Make
+- J-Link、CMSIS-DAP 或其他兼容调试器
+- EtherCAT 主站环境（进行 EtherCAT 联调时）
 
-本项目属于大功率电机驱动方案，母线存在高压，具备触电、功率器件炸管风险：
+由于当前 `main` 分支不包含构建工程，具体的配置、编译和烧录命令应以 [`Software`](https://github.com/AspireROS/Aspire-GaN-Driver/tree/Software) 分支的实际构建文件为准。
 
-- 上电调试阶段严禁徒手触碰功率板、母线端子、GaN 功率器件
-- 初次上电测试建议使用隔离电源、串联限流电阻，降低母线电压进行低压验证
-- GaN 氮化镓器件静电敏感，焊接、调试全过程做好 ESD 静电防护
-- 本开源项目仅作技术学习、原型验证使用，商用产品落地前必须完成完整安规测试、老化可靠性测试
+## ⚠️ 硬件安全
 
-## 📜 开源协议
+本项目涉及电机功率驱动和 GaN 开关器件，调试时可能存在高压、触电、短路、器件损坏和机械运动风险：
 
-本项目采用 Apache 2.0 开源协议，详见 [LICENSE](./LICENSE)
+- 上电前确认电源极性、母线电压、接地和限流设置。
+- 初次上电使用隔离电源或限流方案，并从较低母线电压开始验证。
+- 上电后不要触碰功率器件、母线端子或裸露导体。
+- 焊接和调试过程中采取 ESD 防护措施。
+- 连接电机前先确认 PWM 默认状态、硬件使能和故障保护逻辑。
+- 任何实际应用都必须根据目标系统完成电气安全、EMC、热设计、可靠性和机械安全验证。
 
-- 允许自由使用、修改、分发，商用场景需要保留原始版权声明
-- 禁止未经许可直接使用项目名称作为自有产品官方背书
+本项目仅供学习、研究和原型验证使用，不构成可直接用于量产设备的安全保证。
 
 ## 🤝 贡献指南
 
-欢迎开发者提交 Issue、Pull Request 参与项目迭代：
+欢迎通过 Issue 和 Pull Request 参与改进。提交问题时请尽量提供：
 
-1. Bug 反馈请附带硬件版本、固件 commit 号、调试日志、波形截图
-2. 新增功能建议先提交 Issue 讨论整体实现方案，避免重复开发
-3. 代码提交遵循项目统一代码规范，提交前完成自测编译与基础功能验证
+- 使用的分支、硬件版本和软件 commit
+- 芯片、调试器、工具链及构建环境
+- 最小复现步骤和完整错误日志
+- 必要时附上原理图位置、波形或现场照片
 
-## 📮 联系方式 & 致谢
+提交代码前，请完成与改动相关的编译、基础功能验证和文档更新。
 
-- 项目维护者：____
-- 技术交流群：____
-- 致谢：HPM 官方 SDK、开源 EtherCAT 从站协议栈、GaN 器件厂商技术支持、社区各位开发者
+## 📜 开源协议
 
-## 📝 更新日志
+本项目采用 [Apache License 2.0](./LICENSE) 开源协议。使用、修改或分发本项目时，请遵守许可证中的版权、专利和免责声明条款。
 
-- v0.1：初始开源版本，基础有感 FOC 闭环，EtherCAT 通信原型，硬件 V1 版本
-- v0.2：完善硬件保护逻辑，优化 AS5047P 编码器采集驱动，支持自定义 PDO 配置
-- v1.0：正式稳定版，补齐全套开发文档，增加 TwinCAT 示例工程，修复已知通信 bug
+## 🙏 致谢
+
+- HPMicro HPM SDK 及相关开发工具
+- EtherCAT 生态与开源社区
+- GaN 器件及电机控制领域的技术资料与社区贡献
